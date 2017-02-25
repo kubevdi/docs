@@ -20,4 +20,4 @@ TODO
 
 ### Lessons Learned
 
-[prototype-architecture]: https://github.com/kubevdi/docs/images/prototype-architecture.png "Prototype Architecture"
+[prototype-architecture]: https://raw.githubusercontent.com/kubevdi/docs/master/images/prototype-architecture.png "Prototype Architecture"
