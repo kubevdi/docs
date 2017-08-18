@@ -1,0 +1,62 @@
+apiVersion: auth.kubevdi.io/v1alpha1
+kind: AuthenticationPolicyBinding
+metadata:
+  name: webvdi
+  labels:
+    app: webvdi
+    product: kubevdi
+authenticationPolicyRef:
+  name: webvdi
+application:
+  displayName: webvdi
+  description: User application to access VDI
+  url: https://localhost:8481
+---
+apiVersion: auth.kubevdi.io/v1alpha1
+kind: AuthenticationPolicy
+metadata:
+  labels:
+    app: webvdi
+    product: kubevdi
+  name: webvdi
+policy:
+- mechanisms:
+  - authenticatorRef:
+      name: google1
+      type: google
+  - authenticatorRef:
+      name: duo-auth1
+      type: duo
+- mechanisms:
+  - authenictorRef:
+      name: password1
+      type: password
+---
+apiVersion: auth.kubevdi.io/v1alpha1
+kind: Authenticator
+metadata:
+  labels:
+    app: webvdi
+    product: kubevdi
+  name: password1
+type: password
+serviceRef:
+  name: data
+---
+apiVersion: auth.kubevdi.io/v1alpha1
+kind: Authenticator
+metadata:
+  labels:
+    app: webvdi
+    product: kubevdi
+  name: google1
+type: google
+---
+apiVersion: auth.kubevdi.io/v1alpha1
+kind: Authenticator
+metadata:
+  labels:
+    app: webvdi
+    product: kubevdi
+  name: duo-auth1
+type: duo
